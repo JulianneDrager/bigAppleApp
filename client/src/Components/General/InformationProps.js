@@ -1,6 +1,7 @@
 import React from "react";
 import { Col, Form, InputGroup } from "react-bootstrap";
 
+// THIS COMPONENT IS MISNAMED; IT SHOULD BE CALLED "EstimateProps"
 
 // this is an iterable component; designed to cycle through data from a data object (InformationData.js on this case)
 const InformationProps = (props) => {

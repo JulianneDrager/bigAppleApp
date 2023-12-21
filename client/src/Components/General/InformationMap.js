@@ -25,6 +25,7 @@ import TutorialProps from "../Tutorial/TutorialProps";
 import TutorialCheckboxData from "../Tutorial-checkbox/TutorialCheckboxData";
 import TutorialCheckboxProps from "../Tutorial-checkbox/TutorialCheckboxProps";
 
+// MISNAMED... THIS IS THE MASTER COMPONENT; the others do not have a "Map" Component
 // estimate auto #, estimator name and phone
 const InformationMap = () => {
   const wrapperStyle = { margin: "2rem 0" };
@@ -32,7 +33,7 @@ const InformationMap = () => {
   // const navigate = useNavigate();
   const refForm = useRef();
 
-  // array of InformationProps components, iterating through the InformationData object file
+  // estimate auto #, estimator name and phone
   const EstimateInfoList = InformationData.map((info) => {
     return <InformationProps key={info.id} {...info} />;
   });
@@ -107,17 +108,17 @@ const InformationMap = () => {
         <hr />
 
         {/* building type - central station, fire-pump, jockey-pump */}
-        <Form.Label>TYPE OF BUILDING</Form.Label>
+        <h3>TYPE OF BUILDING</h3>
         <div style={wrapperStyle}>{BuildingType}</div>
         <hr />
 
         {/* building type - combo, sprinkler, stand pipe */}
-        <Form.Label>SYSTEM TYPES</Form.Label>
+        <h3>SYSTEM TYPES</h3>
         <div style={wrapperStyle}>{SystemTypeList}</div>
         <hr />
 
         {/* building type - combo, sprinkler, stand pipe */}
-        <Form.Label>SIGNAGE</Form.Label>
+        <h3>SIGNAGE</h3>
         <div style={wrapperStyle}>{SignageList}</div>
         <hr />
 
