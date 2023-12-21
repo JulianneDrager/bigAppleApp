@@ -22,6 +22,14 @@ const TypeOfBuildingData = [
     // className:"",
     optionName: "jockey_pump",
   },
+
+  {
+    id: 4,
+    optionLabel: "LOCAL PUMP",
+    optionId: "local_pump",
+    // className:"",
+    optionName: "local_pump"
+  }
 ];
 
 export default TypeOfBuildingData;

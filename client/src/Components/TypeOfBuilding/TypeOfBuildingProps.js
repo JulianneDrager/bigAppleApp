@@ -16,7 +16,6 @@ const TypeOfBuildingProps = (props) => {
   };
   return (
     <>
-      <Form.Label>{props.optionLabel}</Form.Label>
       <Form.Check
         id={props.optionId}
         name={props.optionName}
@@ -25,7 +24,7 @@ const TypeOfBuildingProps = (props) => {
         // type="check"
         onChange={onChangeOptionName}
         required
-        // onClick={() => setBoxIsChecked("Violation")}
+      // onClick={() => setBoxIsChecked("Violation")}
       />
     </>
   );

@@ -52,13 +52,13 @@ const InformationMap = () => {
   });
 
 
-  const TutorialList = TutorialData.map((tutorial) => {
-    return <TutorialProps key={tutorial.id} {...tutorial} />;
-  });
+  // const TutorialList = TutorialData.map((tutorial) => {
+  //   return <TutorialProps key={tutorial.id} {...tutorial} />;
+  // });
 
-  const TutorialCheckboxList = TutorialCheckboxData.map((tutorialcheckbox) => {
-    return <TutorialCheckboxProps key={tutorialcheckbox.id} {...tutorialcheckbox} />;
-  });
+  // const TutorialCheckboxList = TutorialCheckboxData.map((tutorialcheckbox) => {
+  //   return <TutorialCheckboxProps key={tutorialcheckbox.id} {...tutorialcheckbox} />;
+  // });
 
   return (
     <>
@@ -72,23 +72,30 @@ const InformationMap = () => {
         autoComplete="on"
       >
         {/* estimate auto #, estimator name and phone  */}
-        {/* <div style={wrapperStyle}>{EstimateInfoList}</div> */}
-        
-        {/* <div style={wrapperStyle}>{TutorialList}</div> */}
-
-        {/*  */}
-        <div style={wrapperStyle}>{TutorialCheckboxList}</div>
-
+        <div style={wrapperStyle}>{EstimateInfoList}</div>
+        <hr />
 
         {/* building address */}
-        {/* <div style={wrapperStyle}>{BuildingInfoList}</div> */}
+        <div style={wrapperStyle}>{BuildingInfoList}</div>
+        <hr />
+
         {/* requested, Management/owner of building, FDNY test */}
-        {/* <div style={wrapperStyle}>{RequestByList}</div> */}
+        <div style={wrapperStyle}>{RequestByList}</div>
+        <hr />
+
         {/* violation boolean, due date, date of estimate */}
-        {/* <ViolationBoolean />
-        <div style={wrapperStyle}>{ViolationList}</div> */}
+        <ViolationBoolean />
+        <hr />
+
+        <div style={wrapperStyle}>{ViolationList}</div>
+        <hr />
+
         {/* building type - central station, fire-pump, jockey-pump */}
-        {/* <div style={wrapperStyle}>{BuildingType}</div> */}
+        <Form.Label>TYPE OF BUILDING</Form.Label>
+        <div style={wrapperStyle}>{BuildingType}</div>
+        <hr />
+
+      
         
       </Form>
     </>
