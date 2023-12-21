@@ -15,6 +15,10 @@ import ViolationBoolean from "../Violation/ViolationBoolean";
 import { Form } from "react-bootstrap";
 import TypeOfBuildingData from "../TypeOfBuilding/TypeOfBuildingData";
 import TypeOfBuildingProps from "../TypeOfBuilding/TypeOfBuildingProps";
+import TypeOfSystemData from "../TypeOfSystem/TypeOfSystemData";
+import TypeOfSystemProps from "../TypeOfSystem/TypeOfSystemProps";
+import SignageData from "../Signage/SignageData";
+import SignageProps from "../Signage/SignageProps";
 
 import TutorialData from "../Tutorial/TutorialData";
 import TutorialProps from "../Tutorial/TutorialProps";
@@ -33,6 +37,7 @@ const InformationMap = () => {
     return <InformationProps key={info.id} {...info} />;
   });
 
+  // building types
   const BuildingType = TypeOfBuildingData.map((type) => {
     return <TypeOfBuildingProps key={type.id} {...type} />;
   });
@@ -46,10 +51,21 @@ const InformationMap = () => {
   const RequestByList = ManagementData.map((management) => {
     return <ManagementProps key={management.id} {...management} />;
   });
+
   // violation boolean, due date, date of estimate
   const ViolationList = ViolationData.map((violation) => {
     return <ViolationProps key={violation.id} {...violation} />;
   });
+
+  // system types
+  const SystemTypeList = TypeOfSystemData.map((type) => {
+    return <TypeOfSystemProps key={type.id} {...type} />;
+  });
+
+    // signage
+    const SignageList = SignageData.map((sign) => {
+      return <SignageProps key={sign.id} {...sign} />;
+    });
 
 
   // const TutorialList = TutorialData.map((tutorial) => {
@@ -95,8 +111,16 @@ const InformationMap = () => {
         <div style={wrapperStyle}>{BuildingType}</div>
         <hr />
 
-      
-        
+        {/* building type - combo, sprinkler, stand pipe */}
+        <Form.Label>SYSTEM TYPES</Form.Label>
+        <div style={wrapperStyle}>{SystemTypeList}</div>
+        <hr />
+
+        {/* building type - combo, sprinkler, stand pipe */}
+        <Form.Label>SIGNAGE</Form.Label>
+        <div style={wrapperStyle}>{SignageList}</div>
+        <hr />
+
       </Form>
     </>
   );
