@@ -20,10 +20,6 @@ import TypeOfSystemProps from "../TypeOfSystem/TypeOfSystemProps";
 import SignageData from "../Signage/SignageData";
 import SignageProps from "../Signage/SignageProps";
 
-import TutorialData from "../Tutorial/TutorialData";
-import TutorialProps from "../Tutorial/TutorialProps";
-import TutorialCheckboxData from "../Tutorial-checkbox/TutorialCheckboxData";
-import TutorialCheckboxProps from "../Tutorial-checkbox/TutorialCheckboxProps";
 
 // MISNAMED... THIS IS THE MASTER COMPONENT; the others do not have a "Map" Component
 // estimate auto #, estimator name and phone
@@ -67,15 +63,6 @@ const InformationMap = () => {
     const SignageList = SignageData.map((sign) => {
       return <SignageProps key={sign.id} {...sign} />;
     });
-
-
-  // const TutorialList = TutorialData.map((tutorial) => {
-  //   return <TutorialProps key={tutorial.id} {...tutorial} />;
-  // });
-
-  // const TutorialCheckboxList = TutorialCheckboxData.map((tutorialcheckbox) => {
-  //   return <TutorialCheckboxProps key={tutorialcheckbox.id} {...tutorialcheckbox} />;
-  // });
 
   return (
     <>
