@@ -1,5 +1,5 @@
 import React from "react";
-import InformationMap from "./Components/General/InforamtionMap";
+import InformationMap from "./Components/General/InformationMap";
 const Screen = () => {
   return (
     <>

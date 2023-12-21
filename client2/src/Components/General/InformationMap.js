@@ -1,3 +1,5 @@
+// THIS IS THE MASTER COMPONENT; the others do not have a "Map" file
+
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -14,6 +16,9 @@ import { Form } from "react-bootstrap";
 import TypeOfBuildingData from "../TypeOfBuilding/TypeOfBuildingData";
 import TypeOfBuildingProps from "../TypeOfBuilding/TypeOfBuildingProps";
 
+import TutorialData from "../Tutorial/TutorialData";
+import TutorialProps from "../Tutorial/TutorialProps";
+
 // estimate auto #, estimator name and phone
 const InformationMap = () => {
   const wrapperStyle = { margin: "2rem 0" };
@@ -21,13 +26,15 @@ const InformationMap = () => {
   // const navigate = useNavigate();
   const refForm = useRef();
 
+  // array of InformationProps components, iterating through the InformationData object file
   const EstimateInfoList = InformationData.map((info) => {
     return <InformationProps key={info.id} {...info} />;
   });
 
-  const BuilidingType = TypeOfBuildingData.map((type) => {
+  const BuildingType = TypeOfBuildingData.map((type) => {
     return <TypeOfBuildingProps key={type.id} {...type} />;
   });
+
   // building address
   const BuildingInfoList = BuildingData.map((building) => {
     return <BuildingProps key={building.id} {...building} />;
@@ -42,6 +49,11 @@ const InformationMap = () => {
     return <ViolationProps key={violation.id} {...violation} />;
   });
 
+
+  const TutorialList = TutorialData.map((tutorial) => {
+    return <TutorialProps key={tutorial.id} {...tutorial} />;
+  });
+
   return (
     <>
       <h1>BIG APPLE SAMPLE APP</h1>
@@ -54,16 +66,21 @@ const InformationMap = () => {
         autoComplete="on"
       >
         {/* estimate auto #, estimator name and phone  */}
-        <div style={wrapperStyle}>{EstimateInfoList}</div>
+        {/* <div style={wrapperStyle}>{EstimateInfoList}</div> */}
+        
+        <div style={wrapperStyle}>{TutorialList}</div>
+
+
         {/* building address */}
-        <div style={wrapperStyle}>{BuildingInfoList}</div>
+        {/* <div style={wrapperStyle}>{BuildingInfoList}</div> */}
         {/* requested, Management/owner of building, FDNY test */}
-        <div style={wrapperStyle}>{RequestByList}</div>
+        {/* <div style={wrapperStyle}>{RequestByList}</div> */}
         {/* violation boolean, due date, date of estimate */}
-        <ViolationBoolean />
-        <div style={wrapperStyle}>{ViolationList}</div>
+        {/* <ViolationBoolean />
+        <div style={wrapperStyle}>{ViolationList}</div> */}
         {/* building type - central station, fire-pump, jockey-pump */}
-        <div style={wrapperStyle}>{BuilidingType}</div>
+        {/* <div style={wrapperStyle}>{BuildingType}</div> */}
+        
       </Form>
     </>
   );

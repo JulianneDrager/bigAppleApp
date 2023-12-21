@@ -1,6 +1,8 @@
 import React from "react";
 import { Col, Form, InputGroup } from "react-bootstrap";
 
+
+// this is an iterable component; designed to cycle through data from a data object (InformationData.js on this case)
 const InformationProps = (props) => {
   return (
     <>
