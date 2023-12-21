@@ -18,6 +18,8 @@ import TypeOfBuildingProps from "../TypeOfBuilding/TypeOfBuildingProps";
 
 import TutorialData from "../Tutorial/TutorialData";
 import TutorialProps from "../Tutorial/TutorialProps";
+import TutorialCheckboxData from "../Tutorial-checkbox/TutorialCheckboxData";
+import TutorialCheckboxProps from "../Tutorial-checkbox/TutorialCheckboxProps";
 
 // estimate auto #, estimator name and phone
 const InformationMap = () => {
@@ -54,6 +56,10 @@ const InformationMap = () => {
     return <TutorialProps key={tutorial.id} {...tutorial} />;
   });
 
+  const TutorialCheckboxList = TutorialCheckboxData.map((tutorialcheckbox) => {
+    return <TutorialCheckboxProps key={tutorialcheckbox.id} {...tutorialcheckbox} />;
+  });
+
   return (
     <>
       <h1>BIG APPLE SAMPLE APP</h1>
@@ -68,7 +74,10 @@ const InformationMap = () => {
         {/* estimate auto #, estimator name and phone  */}
         {/* <div style={wrapperStyle}>{EstimateInfoList}</div> */}
         
-        <div style={wrapperStyle}>{TutorialList}</div>
+        {/* <div style={wrapperStyle}>{TutorialList}</div> */}
+
+        {/*  */}
+        <div style={wrapperStyle}>{TutorialCheckboxList}</div>
 
 
         {/* building address */}
