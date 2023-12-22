@@ -20,6 +20,7 @@ app.use(logger("dev"));
 
 //  routers
 const userRouter = require("./routers/userRouter");
+const generalRouter = require("./routers/generalRouter");
 const materialRouter = require("./routers/materialRouter");
 const laborRouter = require("./routers/laborRouter");
 const signageRouter = require("./routers/signageRouter");
@@ -27,6 +28,7 @@ const systemTypeRouter = require("./routers/systemTypeRouter");
 const typeOfBuildingRouter = require("./routers/typeOfBuildingRouter");
 
 app.use("/user", userRouter);
+app.use("/general", generalRouter);
 app.use("/materials", materialRouter);
 app.use("/labor", laborRouter);
 app.use("/signage", signageRouter);
