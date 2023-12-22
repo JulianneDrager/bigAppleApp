@@ -1,4 +1,4 @@
-const Material = require('../models/Material');
+const Material = require("../models/Material");
 
 // Define specific prices for different materials
 const PIPE_1_5_PRICE = 10; // Adjust this based on your actual price
@@ -22,16 +22,16 @@ const createMaterial = async (req, res) => {
 
   // Calculate cost based on material type and size
   let materialCost;
-  if (type === 'Pipe') {
-    if (size === '1.5') {
+  if (type === "Pipe") {
+    if (size === "1.5") {
       materialCost = quantity * PIPE_1_5_PRICE;
-    } else if (size === '2.5') {
+    } else if (size === "2.5") {
       materialCost = quantity * PIPE_2_5_PRICE;
     }
-  } else if (type === 'Fitting') {
-    if (kind === 'Elbow') {
+  } else if (type === "Fitting") {
+    if (kind === "Elbow") {
       materialCost = quantity * ELBOW_PRICE;
-    } else if (kind === 'Tee') {
+    } else if (kind === "Tee") {
       materialCost = quantity * TEE_PRICE;
     }
   }
@@ -71,7 +71,7 @@ const updateMaterial = async (req, res) => {
 const deleteMaterial = async (req, res) => {
   try {
     await Material.findByIdAndDelete(req.params.id);
-    res.json({ message: 'Material deleted successfully' });
+    res.json({ message: "Material deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
