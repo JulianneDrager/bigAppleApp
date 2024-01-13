@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Form, InputGroup } from "react-bootstrap";
 
 // THIS COMPONENT IS MISNAMED; IT SHOULD BE CALLED "EstimateProps"
 
 // this is an iterable component; designed to cycle through data from a data object (InformationData.js on this case)
-const InformationProps = (props) => {
+const InformationProps = (props, { fields, setFields }) => {
   return (
     <>
       <div style={{ marginTop: "1rem" }}>
@@ -21,7 +21,13 @@ const InformationProps = (props) => {
               }}
               name={props.name}
               type={props.type}
-              required
+              value={fields}
+              onChange={(e) =>
+                setFields([
+                  ...fields.slice(0, fields.id),
+                  { ...fields[fields.id], value: e.target.value },
+                ])
+              }
               minLength={3}
               maxLength={20}
             />
