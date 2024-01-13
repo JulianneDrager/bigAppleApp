@@ -1,5 +1,3 @@
-// THIS FILE IS MISNAMED; IT SHOULD BE CALLED "EstimateData"
-
 const InformationData = [
   {
     id: 1,

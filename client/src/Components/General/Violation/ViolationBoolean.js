@@ -1,15 +1,28 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 
-const ViolationBoolean = (props) => {
-  const [boxIsChecked, setBoxIsChecked] = useState(false);
+const ViolationBoolean = ({ violation, setViolation }) => {
   const [choiceYes, setChoiceYes] = useState(true);
   const [choiceNo, setChoiceNo] = useState(true);
 
   const onChangeViolation = (e) => {
     if (e.target.name === "yes_violation" && e.target.checked === true) {
+      setChoiceYes(true);
+      setChoiceNo(false);
+      setViolation(true);
+    }
+
+    if (e.target.checked === false) {
       setChoiceYes(false);
       setChoiceNo(true);
+    }
+  };
+
+  const onChangeViolationNo = (e) => {
+    if (e.target.name === "no_violation" && e.target.checked === true) {
+      setChoiceYes(false);
+      setChoiceNo(true);
+      setViolation(false);
     }
 
     if (e.target.checked === false) {
@@ -24,22 +37,20 @@ const ViolationBoolean = (props) => {
         id="yes_violation"
         name="yes_violation"
         label="YES"
-        value={boxIsChecked}
+        value={violation}
         // type="check"
         onChange={onChangeViolation}
-        required
-        // onClick={() => setBoxIsChecked("Violation")}
+        onClick={() => setViolation("Violation")}
       />
 
       <Form.Check
         id="no_violation"
         name="no_violation"
         label="NO"
-        value={boxIsChecked}
+        value={violation}
         // type="check"
-        onChange={onChangeViolation}
-        required
-        // onClick={() => setBoxIsChecked("NO violation")}
+        onChange={onChangeViolationNo}
+        onClick={() => setViolation("NO violation")}
       />
     </>
   );
