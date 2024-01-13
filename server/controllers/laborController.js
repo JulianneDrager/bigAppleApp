@@ -1,10 +1,10 @@
-const Labor = require('../models/Labor');
+const Labor = require("../models/Labor");
 
 // Assuming you have a fixed rate for labor per hour
-const LABOR_RATE_PER_HOUR = 20; // Adjust this based on your actual rates
+// const LABOR_RATE_PER_HOUR = 20; // Adjust this based on your actual rates
 
 // Get all labor entries
-const getAllLaborEntries = async (req, res) => {
+exports.getAllLaborEntries = async (req, res) => {
   try {
     const laborEntries = await Labor.find();
     res.json(laborEntries);
@@ -14,29 +14,35 @@ const getAllLaborEntries = async (req, res) => {
 };
 
 // Create a new labor entry
-const createLaborEntry = async (req, res) => {
-  const { numberOfMen, hoursOfWork, typeOfWork } = req.body;
+exports.createLaborEntry = async (req, res) => {
+  let newLabor = new Labor({
+    numberOfMen: req.body.numberOfMen,
+    hoursOfWork: req.body.hoursOfWork,
+    numberOfDays: req.body.numberOfDays,
+    price: req.body.price,
 
-  // Calculate cost based on labor rates
-  let laborCost;
-  if (typeOfWork === 'Straight Time') {
-    laborCost = numberOfMen * hoursOfWork * LABOR_RATE_PER_HOUR;
-  } else if (typeOfWork === 'Overtime') {
-    // You can have a different overtime rate if needed
-    const OVERTIME_RATE = 1.5; // 1.5 times the regular rate
-    laborCost = numberOfMen * hoursOfWork * LABOR_RATE_PER_HOUR * OVERTIME_RATE;
-  } else if (typeOfWork === 'Prevailing Wage') {
-    // Handle prevailing wage calculation if needed
-    // You might have a different rate for prevailing wage
-    const PREVAILING_WAGE_RATE = 25; // Adjust this based on your actual rate
-    laborCost = numberOfMen * hoursOfWork * PREVAILING_WAGE_RATE;
-  }
+    // array of Labor work
+    straightTime: req.body.straightTime,
+    overtime: req.body.overtime,
+    overtimeHours: req.body.overtimeHours,
+    prevailingWage: req.body.prevailingWage,
+    prevailingWageHours: req.body.prevailingWageHours,
+    prevailingWageDays: req.body.prevailingWageDays,
 
-  const newLabor = new Labor({
-    numberOfMen,
-    hoursOfWork,
-    typeOfWork,
-    price: laborCost,
+    // Calculate cost based on labor rates
+    // let laborCost;
+    // if (typeOfWork === 'Straight Time') {
+    //   laborCost = numberOfMen * hoursOfWork * LABOR_RATE_PER_HOUR;
+    // } else if (typeOfWork === 'Overtime') {
+    //   // You can have a different overtime rate if needed
+    //   const OVERTIME_RATE = 1.5; // 1.5 times the regular rate
+    //   laborCost = numberOfMen * hoursOfWork * LABOR_RATE_PER_HOUR * OVERTIME_RATE;
+    // } else if (typeOfWork === 'Prevailing Wage') {
+    //   // Handle prevailing wage calculation if needed
+    //   // You might have a different rate for prevailing wage
+    //   const PREVAILING_WAGE_RATE = 25;
+    //   laborCost = numberOfMen * hoursOfWork * PREVAILING_WAGE_RATE;
+    // }
   });
 
   try {
@@ -48,7 +54,7 @@ const createLaborEntry = async (req, res) => {
 };
 
 // Update a labor entry
-const updateLaborEntry = async (req, res) => {
+exports.updateLaborEntry = async (req, res) => {
   try {
     const updatedLaborEntry = await Labor.findByIdAndUpdate(
       req.params.id,
@@ -61,19 +67,44 @@ const updateLaborEntry = async (req, res) => {
   }
 };
 
+// update via filter
+// exports.updateTypeOfWork = async (req, res) => {
+//   await Labor.findOneAndUpdate(
+//     {
+//       _id: req.params.id,
+//       pipe: { $elemMatch: { _id: req.params.typeOfWorkId } },
+//     }, // FILTER
+
+//     {
+//       $set: {
+//         "typeOfWork.$.straightTime": req.body.straightTime, // UPDATE
+//         "typeOfWork.$.overtime": req.body.overtime, //UPDATE
+//         "typeOfWork.$.prevailingWage": req.body.prevailingWage, // UPDATE
+//       },
+//     },
+
+//     { new: true, safe: true, upsert: true },
+//     (err, data) => {
+//       if (err) {
+//         res.status(500).json({
+//           message: "update not created",
+//         });
+//       } else {
+//         res.status(200).json({
+//           success: true,
+//           message: "Post Updated",
+//         });
+//       }
+//     }
+//   );
+// };
+
 // Delete a labor entry
-const deleteLaborEntry = async (req, res) => {
+exports.deleteLaborEntry = async (req, res) => {
   try {
     await Labor.findByIdAndDelete(req.params.id);
-    res.json({ message: 'Labor entry deleted successfully' });
+    res.json({ message: "Labor entry deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-};
-
-module.exports = {
-  getAllLaborEntries,
-  createLaborEntry,
-  updateLaborEntry,
-  deleteLaborEntry,
 };
