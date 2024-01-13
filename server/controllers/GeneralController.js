@@ -19,12 +19,13 @@ const createGeneral = async (req, res) => {
     street,
     city,
     zipcode,
-    reqby,
+    notes,
+    reqBy,
     management,
-    fdnytest,
+    fdnyTest,
     violation,
-    violationdate,
-    estimatedate,
+    violationDate,
+    estimateDate,
   } = req.body;
 
   const newGeneral = new General({
@@ -34,17 +35,28 @@ const createGeneral = async (req, res) => {
     street,
     city,
     zipcode,
-    reqby,
+    notes,
+    reqBy,
     management,
-    fdnytest,
+    fdnyTest,
     violation,
-    violationdate,
-    estimatedate,
+    violationDate,
+    estimateDate,
   });
 
   try {
     await newGeneral.save();
     res.status(201).json(newGeneral);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+//get General Id
+const getGeneralById = async (req, res) => {
+  try {
+    const getTheGeneralID = await General.findById({ _id: req.params.id });
+    res.json(getTheGeneralID);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -76,6 +88,7 @@ const deleteGeneral = async (req, res) => {
 
 module.exports = {
   getAllGeneral,
+  getGeneralById,
   createGeneral,
   updateGeneral,
   deleteGeneral,

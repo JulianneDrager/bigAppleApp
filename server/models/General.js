@@ -2,17 +2,18 @@ const mongoose = require("mongoose");
 
 const GeneralSchema = new mongoose.Schema({
   number: { type: Number },
-  name: { type: String, required: true },
-  phone: { type: Number, required: true },
-  street: { type: String, required: true },
-  city: { type: String, required: true },
-  zipcode: { type: Number, required: true },
-  reqby: { type: String, required: true },
-  management: { type: String, required: true },
-  fdnytest: { type: Boolean, required: true },
-  violation: { type: Boolean, required: true },
-  violationdate: { type: String, required: true },
-  estimatedate: { type: String, required: true },
+  name: { type: String },
+  phone: { type: Number },
+  street: { type: String },
+  city: { type: String },
+  zipcode: { type: Number },
+  notes: { type: String },
+  reqBy: { type: String },
+  management: { type: String },
+  fdnyTest: { type: String },
+  violation: { type: Boolean },
+  violationDate: { type: String },
+  estimateDate: { type: String },
 });
 
 module.exports = mongoose.model("General", GeneralSchema);
