@@ -95,7 +95,7 @@ const Options = () => {
           />
 
           <Button type="submit" value="send">
-            SUBMIT
+            SAVE
           </Button>
         </Form>
       </div>

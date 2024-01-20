@@ -10,6 +10,7 @@ const NumberOfMen = ({ numberOfMen, setNumberOfMen }) => {
       <Row>
         <Col>
           <>
+            <Form.Text>Enter Number of Men</Form.Text>
             <Form.Control
               as="textarea"
               placeholder="Enter Number of Men"

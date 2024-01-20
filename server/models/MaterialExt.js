@@ -15,35 +15,35 @@ const materialExtSchema = new Schema({
 
   details: [
     {
-      // pipeSize: [
-      //   {
-      //     pipeA: { type: Boolean, trim: true },
-      //     pipeB: { type: Boolean, trim: true },
-      //   },
-      // ],
+      pipeSize: [
+        {
+          pipeA: { type: Boolean, trim: true },
+          pipeB: { type: Boolean, trim: true },
+        },
+      ],
       pipeAPrice: { type: Number, trim: true },
       pipeBPrice: { type: Number, trim: true },
       pipeAQty: { type: Number, trim: true },
       pipeBQty: { type: Number, trim: true },
 
-      // elbowSize: [
-      //   {
-      //     elbowA: { type: Boolean, trim: true },
-      //     elbowB: { type: Boolean, trim: true },
-      //   },
-      // ],
+      elbowSize: [
+        {
+          elbowA: { type: Boolean, trim: true },
+          elbowB: { type: Boolean, trim: true },
+        },
+      ],
 
       elbowAPrice: { type: Number, trim: true },
       elbowBPrice: { type: Number, trim: true },
       elbowAQty: { type: Number, trim: true },
       elbowBQty: { type: Number, trim: true },
 
-      // teeSize: [
-      //   {
-      //     teeA: { type: Boolean, trim: true },
-      //     teeB: { type: Boolean, trim: true },
-      //   },
-      // ],
+      teeSize: [
+        {
+          teeA: { type: Boolean, trim: true },
+          teeB: { type: Boolean, trim: true },
+        },
+      ],
 
       teeAPrice: { type: Number, trim: true },
       teeBPrice: { type: Number, trim: true },

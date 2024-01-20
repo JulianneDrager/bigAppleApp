@@ -1,10 +1,7 @@
-// import UserLink from "../UI/UserLink";
-// import Wrapper from "../UI/Wrapper";
 import { Form, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-// import style from "../Create/Create.module.css";
 
 const ReviewSignage = () => {
   const [comboCurbBox, setComboCurbBox] = useState([]);
@@ -30,7 +27,6 @@ const ReviewSignage = () => {
   }, [setComboCurbBox, setComboLocation, setCallFDNY]);
 
   // allows for the last array element to show in review file
-
   const idResult = id.slice(-1)[0];
 
   const comboCurbBoxResult = comboCurbBox.slice(-1)[0];

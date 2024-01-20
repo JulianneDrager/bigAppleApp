@@ -11,14 +11,10 @@ const UpdateSignage = () => {
   const onChangeComboCurbBox = (e) => {
     if (e.target.name === "combo-curb-box" && e.target.checked === true) {
       setComboCurbBox(true);
-      // setComboLocation(false);
-      // setCallFDNY(false);
     }
 
     if (e.target.checked === false) {
       setComboCurbBox(false);
-      // setComboLocation(true);
-      // setCallFDNY(true);
     }
   };
 

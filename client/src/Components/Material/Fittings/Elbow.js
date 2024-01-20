@@ -1,34 +1,29 @@
-import React, { useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
-const Elbow = ({
+import React from "react";
+import { Col, Form, Row } from "react-bootstrap";
+const elbows = ({
   elbowA,
   setElbowA,
   elbowB,
   setElbowB,
-  elbowAPrice,
-  setElbowAPrice,
-  elbowBPrice,
-  setElbowBPrice,
   elbowAQty,
   setElbowAQty,
   elbowBQty,
   setElbowBQty,
+  setShowA,
+  setShowB,
 }) => {
-  const [showA, setShowA] = useState(false);
-  const [showB, setShowB] = useState(false);
-
   const onChangeElbowA = (e) => {
-    // if elbowA is checked...
+    // if ElbowA is checked...
     if (e.target.name === "elbow-a" && e.target.checked === true) {
       setShowA(true);
       setElbowA(true);
     }
-    // if elbowA is un-checked
+    // if ElbowA is un-checked
     if (e.target.checked === false) {
       setShowA(false);
       setElbowA(false);
     }
-    // if both elbowA and elbowB are un-checked
+    // if both ElbowA and ElbowB are un-checked
     if (
       e.target.name === "elbow-a" &&
       "elbow-b" &&
@@ -40,17 +35,18 @@ const Elbow = ({
   };
 
   const onChangeElbowB = (e) => {
-    // if elbowB is checked...
+    // if ElbowB is checked...
     if (e.target.name === "elbow-b" && e.target.checked === true) {
       setShowB(true);
       setElbowB(true);
     }
-    // if elbowB is un-checked
+    // if ElbowB is un-checked
     if (e.target.checked === false) {
       setShowB(false);
       setElbowB(false);
     }
-    // if both elbowA and elbowB are un-checked
+
+    // if both ElbowA and ElbowB are un-checked
     if (
       e.target.name === "elbow-a" &&
       "elbow-b" &&
@@ -61,60 +57,32 @@ const Elbow = ({
     }
   };
 
-  // states to show/hide "record estimate" button onClick
-  const [hideA, setHideA] = useState(false);
-  const [hideB, setHideB] = useState(false);
+  const updateElbowPriceA = elbowAQty * 25;
+  const updateElbowPriceB = elbowBQty * 35;
 
-  // NOTE A: sends pipeAPrice to server ----------------------------------------
-  const sendPriceA = () => {
-    const lengthQtyPrice = elbowAQty * 25;
-    // checks if state is a number and adds lengthQtyPrice to pipeAPrice
-    if (typeof elbowAPrice === "number") {
-      setElbowAPrice(parseInt(elbowAPrice) + parseInt(lengthQtyPrice));
-      setHideA(true);
-    }
-  };
-  // resets pipeAPrice and PipeAQty to 0
-  // shows "record estimate" button when rest button is clicked
-  const resetPriceA = () => {
-    if (typeof elbowAPrice === "number") {
-      setElbowAPrice(0);
-      setElbowAQty(0);
-      setHideA(false);
-    }
-  };
+  console.log("update", updateElbowPriceA);
 
-  // see noteA ----------------------------------------------------------------
-  const sendPriceB = () => {
-    const lengthQtyPrice = elbowBQty * 35;
-    if (typeof elbowBPrice === "number") {
-      setElbowBPrice(parseInt(elbowBPrice) + parseInt(lengthQtyPrice));
-      setHideB(true);
-    }
-  };
-  console.log("A", elbowAPrice);
-  console.log("B", elbowBPrice);
-
-  const resetPriceB = () => {
-    if (typeof elbowBPrice === "number") {
-      setElbowBPrice(0);
-      setElbowBQty(0);
-      setHideB(false);
-    }
-  };
+  // style
+  const pStyle = { fontSize: "2rem" };
+  const hrStyle = { margin: "1rem", border: "0" };
+  const inputStyle = { height: "50px" };
+  const checkStyle = { fontWeight: "bold" };
 
   return (
     <>
+      <Form.Label>
+        <b>FITTINGS</b>
+      </Form.Label>
       <Row>
         <Form.Label>
-          <em>FITTINGS</em>
+          <em>ELBOW</em>
         </Form.Label>
         <Col>
           <Form.Check
             id="elbow-a"
             name="elbow-a"
             label="1/2 ELBOW"
-            style={{ fontWeight: "bold" }}
+            style={checkStyle}
             value={elbowA}
             onChange={onChangeElbowA}
           />
@@ -124,41 +92,27 @@ const Elbow = ({
               <>
                 <Form.Control
                   as="textarea"
-                  placeholder="NUMBER OF ELBOWS"
-                  style={{ height: "50px" }}
+                  placeholder="ENTER QTY"
+                  style={inputStyle}
                   value={elbowAQty}
                   onChange={(e) => setElbowAQty(e.target.value)}
                 />
-                {/* if hideA is true */}
-                <p
-                  style={{
-                    fontSize: "2rem",
-                    display: hideA ? "block" : "none",
-                  }}
-                >
-                  Cost ${elbowAPrice}
-                </p>
-                <Button
-                  style={{ display: hideA ? "none" : "block" }}
-                  onClick={sendPriceA}
-                >
-                  Record Estimate:
-                </Button>
-                <hr style={{ margin: ".1rem", border: "0" }} />
-                <Button onClick={resetPriceA}>RESET</Button>
-                <hr style={{ margin: "1rem", border: "0" }} />
+
+                <p style={pStyle}>Cost ${updateElbowPriceA}</p>
+                <hr style={hrStyle} />
               </>
             )}
           </Col>
         </Col>
       </Row>
+      {/* elbow B -------------------------------------------------------- */}
       <Row>
         <div>
           <Form.Check
             id="elbow-b"
             name="elbow-b"
             label="2 1/2 ELBOW"
-            style={{ fontWeight: "bold" }}
+            style={checkStyle}
             value={elbowB}
             onChange={onChangeElbowB}
           />
@@ -168,24 +122,12 @@ const Elbow = ({
             <>
               <Form.Control
                 as="textarea"
-                placeholder="NUMBER OF ELBOWS"
-                style={{ height: "50px" }}
+                placeholder="ENTER # OF LENGTHS"
+                style={inputStyle}
                 value={elbowBQty}
                 onChange={(e) => setElbowBQty(e.target.value)}
               />
-              <p
-                style={{ fontSize: "2rem", display: hideB ? "block" : "none" }}
-              >
-                Cost ${elbowBPrice}
-              </p>
-              <Button
-                style={{ display: hideB ? "none" : "block" }}
-                onClick={sendPriceB}
-              >
-                Record Estimate:
-              </Button>
-              <hr style={{ margin: ".1rem", border: "0" }} />
-              <Button onClick={resetPriceB}>RESET</Button>
+              <p style={pStyle}>Cost ${updateElbowPriceB}</p>
             </>
           )}
         </Col>
@@ -193,4 +135,4 @@ const Elbow = ({
     </>
   );
 };
-export default Elbow;
+export default elbows;

@@ -11,14 +11,10 @@ const UpdateSystemType = () => {
   const onChangeCombo = (e) => {
     if (e.target.name === "combo" && e.target.checked === true) {
       setCombo(true);
-      // setSprinkler(false);
-      // setStandPipe(false);
     }
 
     if (e.target.checked === false) {
       setCombo(false);
-      // setSprinkler(true);
-      // setStandPipe(true);
     }
   };
 

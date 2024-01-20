@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import NumberOfHours from "../Hours/NumberOfHours";
 
 const LaborType = ({
@@ -29,7 +28,6 @@ const LaborType = ({
       setOvertime(false);
     }
   };
-  // console.log("ov", overtime);
 
   const onChangeStraightTime = (e) => {
     if (e.target.name === "straight-time" && e.target.checked === true) {
@@ -40,7 +38,6 @@ const LaborType = ({
       setStraightTime(false);
     }
   };
-  // console.log("st", straightTime);
 
   const onChangePrevailingWage = (e) => {
     if (e.target.name === "prevailing-wage" && e.target.checked === true) {
@@ -51,7 +48,6 @@ const LaborType = ({
       setPrevailingWage(false);
     }
   };
-  // console.log("pv", prevailingWage);
 
   return (
     <>

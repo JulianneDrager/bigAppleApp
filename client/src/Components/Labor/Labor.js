@@ -7,17 +7,17 @@ import NumberOfHours from "./Hours/NumberOfHours";
 import LaborType from "./Type/LaborType";
 
 const Labor = () => {
-  const [numberOfMen, setNumberOfMen] = useState("");
-  const [hoursOfWork, setHoursOfWork] = useState("");
-  const [numberOfDays, setNumberOfDays] = useState("");
+  const [numberOfMen, setNumberOfMen] = useState(0);
+  const [hoursOfWork, setHoursOfWork] = useState(0);
+  const [numberOfDays, setNumberOfDays] = useState(0);
   const [price, setPrice] = useState("");
 
   const [straightTime, setStraightTime] = useState(false);
   const [overtime, setOvertime] = useState(false);
-  const [overtimeHours, setOvertimeHours] = useState("");
+  const [overtimeHours, setOvertimeHours] = useState(0);
   const [prevailingWage, setPrevailingWage] = useState(false);
-  const [prevailingWageHours, setPrevailingWageHours] = useState("");
-  const [prevailingWageDays, setPrevailingWageDays] = useState("");
+  const [prevailingWageHours, setPrevailingWageHours] = useState(0);
+  const [prevailingWageDays, setPrevailingWageDays] = useState(0);
 
   const navigate = useNavigate();
   const refForm = useRef();
@@ -97,7 +97,7 @@ const Labor = () => {
         />
         <hr />
         <Button type="submit" value="send">
-          SUBMIT
+          SAVE
         </Button>
       </Form>
     </>

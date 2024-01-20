@@ -1,10 +1,7 @@
-// import UserLink from "../UI/UserLink";
-// import Wrapper from "../UI/Wrapper";
 import { Form, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-// import style from "../Create/Create.module.css";
 
 const ReviewBuildingType = () => {
   const [centralStation, setCentralStation] = useState([]);
@@ -33,8 +30,6 @@ const ReviewBuildingType = () => {
 
   // allows for the last array element to show in review file
   const idResult = id.slice(-1)[0];
-  // console.log(idResult); // 65a09d0b8afbb8e13fe8e680
-
   const centralStationResult = centralStation.slice(-1)[0];
   const firePumpResult = firePump.slice(-1)[0];
   const jockeyPumpResult = jockeyPump.slice(-1)[0];

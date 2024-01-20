@@ -13,16 +13,10 @@ const UpdateBuildingType = () => {
   const onChangeCentralStation = (e) => {
     if (e.target.name === "central-station" && e.target.checked === true) {
       setCentralStation(true);
-      // setFirePump(false);
-      // setJockeyPump(false);
-      // setLocalPump(false);
     }
 
     if (e.target.checked === false) {
       setCentralStation(false);
-      // setFirePump(true);
-      // setJockeyPump(true);
-      // setLocalPump(true);
     }
   };
 
@@ -58,17 +52,6 @@ const UpdateBuildingType = () => {
 
   const navigate = useNavigate();
   const { id } = useParams();
-
-  // console.log(
-  //   "CT",
-  //   centralStation,
-  //   "FP",
-  //   firePump,
-  //   "JP",
-  //   jockeyPump,
-  //   "LP",
-  //   localPump
-  // );
 
   // UPDATE DATA ---------------------------------------------------
   const updateHandler = (e) => {

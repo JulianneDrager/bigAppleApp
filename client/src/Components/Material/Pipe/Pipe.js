@@ -1,22 +1,17 @@
-import React, { useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import React from "react";
+import { Col, Form, Row } from "react-bootstrap";
 const Pipes = ({
   pipeA,
   setPipeA,
   pipeB,
   setPipeB,
-  pipeAPrice,
-  setPipeAPrice,
-  pipeBPrice,
-  setPipeBPrice,
   pipeAQty,
   setPipeAQty,
   pipeBQty,
   setPipeBQty,
+  setShowA,
+  setShowB,
 }) => {
-  const [showA, setShowA] = useState(false);
-  const [showB, setShowB] = useState(false);
-
   const onChangePipeA = (e) => {
     // if pipeA is checked...
     if (e.target.name === "pipe-a" && e.target.checked === true) {
@@ -54,46 +49,16 @@ const Pipes = ({
     }
   };
 
-  // states to show/hide "record estimate" button onClick
-  const [hideA, setHideA] = useState(false);
-  const [hideB, setHideB] = useState(false);
+  const updatePriceA = pipeAQty * 100;
+  const updatePriceB = pipeBQty * 250;
 
-  // NOTE A: sends pipeAPrice to server ----------------------------------------
-  const sendPriceA = () => {
-    const lengthQtyPrice = pipeAQty * 100;
-    // checks if state is a number and adds lengthQtyPrice to pipeAPrice
-    if (typeof pipeAPrice === "number") {
-      setPipeAPrice(parseInt(pipeAPrice) + parseInt(lengthQtyPrice));
-      setHideA(true);
-    }
-  };
-  // resets pipeAPrice and PipeAQty to 0
-  // shows "record estimate" button when rest button is clicked
-  const resetPriceA = () => {
-    if (typeof pipeAPrice === "number") {
-      setPipeAPrice(0);
-      setPipeAQty(0);
-      setHideA(false);
-    }
-  };
+  console.log("update", updatePriceB);
 
-  // see noteA ----------------------------------------------------------------
-  const sendPriceB = () => {
-    const lengthQtyPrice = pipeBQty * 250;
-    if (typeof pipeBPrice === "number") {
-      setPipeBPrice(parseInt(pipeBPrice) + parseInt(lengthQtyPrice));
-      setHideB(true);
-    }
-  };
-  console.log("A", pipeAPrice);
-
-  const resetPriceB = () => {
-    if (typeof pipeBPrice === "number") {
-      setPipeBPrice(0);
-      setPipeBQty(0);
-      setHideB(false);
-    }
-  };
+  // style
+  const pStyle = { fontSize: "2rem" };
+  const hrStyle = { margin: "1rem", border: "0" };
+  const inputStyle = { height: "50px" };
+  const checkStyle = { fontWeight: "bold" };
 
   return (
     <>
@@ -109,7 +74,7 @@ const Pipes = ({
             id="pipe-a"
             name="pipe-a"
             label="1/2 PIPE"
-            style={{ fontWeight: "bold" }}
+            style={checkStyle}
             value={pipeA}
             onChange={onChangePipeA}
           />
@@ -119,43 +84,27 @@ const Pipes = ({
               <>
                 <Form.Control
                   as="textarea"
-                  placeholder="LENGTH AMOUNT"
-                  style={{ height: "50px" }}
+                  placeholder="ENTER # OF LENGTHS"
+                  style={inputStyle}
                   value={pipeAQty}
                   onChange={(e) => setPipeAQty(e.target.value)}
                 />
 
-                {/* if hideA is true */}
-                <p
-                  style={{
-                    fontSize: "2rem",
-                    display: hideA ? "block" : "none",
-                  }}
-                >
-                  Cost ${pipeAPrice}
-                </p>
-                <Button
-                  style={{ display: hideA ? "none" : "block" }}
-                  onClick={sendPriceA}
-                >
-                  Record Estimate:
-                </Button>
-                <hr style={{ margin: ".1rem", border: "0" }} />
-                <Button onClick={resetPriceA}>RESET</Button>
-                <hr style={{ margin: "1rem", border: "0" }} />
+                <p style={pStyle}>Cost ${updatePriceA}</p>
+                <hr style={hrStyle} />
               </>
             )}
           </Col>
         </Col>
       </Row>
-
+      {/* PIPE B -------------------------------------------------------- */}
       <Row>
         <div>
           <Form.Check
             id="pipe-b"
             name="pipe-b"
             label="2 1/2 PIPE"
-            style={{ fontWeight: "bold" }}
+            style={checkStyle}
             value={pipeB}
             onChange={onChangePipeB}
           />
@@ -165,24 +114,12 @@ const Pipes = ({
             <>
               <Form.Control
                 as="textarea"
-                placeholder="Number of 2 1/2 Lengths"
-                style={{ height: "50px" }}
+                placeholder="ENTER # OF LENGTHS"
+                style={inputStyle}
                 value={pipeBQty}
                 onChange={(e) => setPipeBQty(e.target.value)}
               />
-              <p
-                style={{ fontSize: "2rem", display: hideB ? "block" : "none" }}
-              >
-                Cost ${pipeBPrice}
-              </p>
-              <Button
-                style={{ display: hideB ? "none" : "block" }}
-                onClick={sendPriceB}
-              >
-                Record Estimatee:
-              </Button>
-              <hr style={{ margin: ".1rem", border: "0" }} />
-              <Button onClick={resetPriceB}>RESET</Button>
+              <p style={pStyle}>Cost ${updatePriceB}</p>
             </>
           )}
         </Col>

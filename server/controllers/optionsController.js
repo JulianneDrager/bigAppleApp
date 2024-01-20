@@ -37,7 +37,7 @@ optionsController = {
   // Delete Type Building Options
   deleteOptions: async (req, res) => {
     try {
-      await options.findByIdAndDelete(req.params.id);
+      await Options.findByIdAndDelete(req.params.id);
       res.json({ message: "Option deleted successfully" });
     } catch (error) {
       res.status(500).json({ message: error.message });

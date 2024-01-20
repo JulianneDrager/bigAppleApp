@@ -10,7 +10,15 @@ import UpdateGeneral from "./Components/Update/UpdateGeneral";
 import UpdateBuildingType from "./Components/Update/UpdateBuildingType";
 import UpdateSystemType from "./Components/Update/UpdateSystemType";
 import UpdateSignage from "./Components/Update/UpdateSignage";
-import UpdatePipe from "./Components/Update/UpdatePipe";
+import UpdatePipeA from "./Components/Update/Materials/UpdatePipeA";
+import UpdateElbowA from "./Components/Update/Materials/Fittings/UpdateElbowA";
+import UpdateTeeA from "./Components/Update/Materials/Fittings/UpdateTeeA";
+import UpdateStraightTime from "./Components/Update/Labor/UpdateStraightTime";
+import UpdateOvertime from "./Components/Update/Labor/UpdateOvertime";
+import UpdatePrevailingWage from "./Components/Update/Labor/UpdatePrevailingWage";
+import UpdatePipeB from "./Components/Update/Materials/UpdatePipeB";
+import UpdateElbowB from "./Components/Update/Materials/Fittings/UpdateElbowB";
+import UpdateTeeB from "./Components/Update/Materials/Fittings/UpdateTeeB";
 
 function App() {
   return (
@@ -35,8 +43,48 @@ function App() {
           <Route exact path="/updateSigns/:id" element={<UpdateSignage />} />
           <Route
             exact
-            path="/updatePipe/:id/:detailsId"
-            element={<UpdatePipe />}
+            path="/updatePipeA/:id/:detailsId"
+            element={<UpdatePipeA />}
+          />
+          <Route
+            exact
+            path="/updatePipeB/:id/:detailsId"
+            element={<UpdatePipeB />}
+          />
+          <Route
+            exact
+            path="/UpdateElbowA/:id/:detailsId"
+            element={<UpdateElbowA />}
+          />
+          <Route
+            exact
+            path="/updateElbowB/:id/:detailsId"
+            element={<UpdateElbowB />}
+          />
+          <Route
+            exact
+            path="/updateTeeA/:id/:detailsId"
+            element={<UpdateTeeA />}
+          />
+          <Route
+            exact
+            path="/updateTeeB/:id/:detailsId"
+            element={<UpdateTeeB />}
+          />
+          <Route
+            exact
+            path="/UpdateStLabor/:id/"
+            element={<UpdateStraightTime />}
+          />
+          <Route
+            exact
+            path="/UpdateOtLabor/:id/"
+            element={<UpdateOvertime />}
+          />
+          <Route
+            exact
+            path="/UpdatePvLabor/:id/"
+            element={<UpdatePrevailingWage />}
           />
 
           <Route exact path="/review" element={<Review />} />
