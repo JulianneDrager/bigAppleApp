@@ -22,8 +22,8 @@ const Materials = () => {
   const [pipeAPrice, setPipeAPrice] = useState(0);
   const [pipeBPrice, setPipeBPrice] = useState(0);
   // pipe length qty
-  const [pipeAQty, setPipeAQty] = useState(0);
-  const [pipeBQty, setPipeBQty] = useState(0);
+  const [pipeAQty, setPipeAQty] = useState("");
+  const [pipeBQty, setPipeBQty] = useState("");
 
   // elbow sizes 1/2 and 2 1/2
   const [elbowA, setElbowA] = useState(false);
@@ -32,8 +32,8 @@ const Materials = () => {
   const [elbowAPrice, setElbowAPrice] = useState(0);
   const [elbowBPrice, setElbowBPrice] = useState(0);
   // elbow qty
-  const [elbowAQty, setElbowAQty] = useState(0);
-  const [elbowBQty, setElbowBQty] = useState(0);
+  const [elbowAQty, setElbowAQty] = useState("");
+  const [elbowBQty, setElbowBQty] = useState("");
 
   // tees sizes 1/2 and 2 1/2
   const [teeA, setTeeA] = useState(false);
@@ -42,8 +42,11 @@ const Materials = () => {
   const [teeAPrice, setTeeAPrice] = useState(0);
   const [teeBPrice, setTeeBPrice] = useState(0);
   // tees qty
-  const [teeAQty, setTeeAQty] = useState(0);
-  const [teeBQty, setTeeBQty] = useState(0);
+  const [teeAQty, setTeeAQty] = useState("");
+  const [teeBQty, setTeeBQty] = useState("");
+
+  const [showA, setShowA] = useState(false);
+  const [showB, setShowB] = useState(false);
 
   const [details, setDetails] = useState([
     {
@@ -99,6 +102,56 @@ const Materials = () => {
     });
   };
 
+  // SEND DATA ------------------------------------------------------
+
+  const sendPipePriceA = () => {
+    const lengthQtyPrice = pipeAQty * 100;
+    // checks if state is a number and adds lengthQtyPrice to pipeAPrice
+    if (typeof pipeAPrice) {
+      setPipeAPrice(parseInt(lengthQtyPrice));
+    }
+  };
+
+  const sendPipePriceB = () => {
+    const lengthQtyPrice = pipeBQty * 250;
+    // checks if state is a number and adds lengthQtyPrice to pipeAPrice
+    if (typeof pipeAPrice) {
+      setPipeBPrice(parseInt(lengthQtyPrice));
+    }
+  };
+
+  const sendElbowPriceA = () => {
+    const qtyPrice = elbowAQty * 25;
+    // checks if state is a number and adds lengthQtyPrice to pipeAPrice
+    if (typeof elbowAPrice) {
+      setElbowAPrice(parseInt(qtyPrice));
+    }
+  };
+
+  const sendElbowPriceB = () => {
+    const qtyPrice = elbowBQty * 35;
+    // checks if state is a number and adds lengthQtyPrice to pipeAPrice
+    if (typeof elbowBPrice) {
+      setElbowBPrice(parseInt(qtyPrice));
+    }
+  };
+
+  const sendTeePriceA = () => {
+    const qtyPrice = teeAQty * 20;
+    // checks if state is a number and adds lengthQtyPrice to pipeAPrice
+    if (typeof teeBPrice) {
+      setTeeAPrice(parseInt(qtyPrice));
+    }
+  };
+
+  const sendTeePriceB = () => {
+    const qtyPrice = teeBQty * 29;
+    // checks if state is a number and adds lengthQtyPrice to pipeAPrice
+    if (typeof teeBPrice) {
+      setTeeBPrice(parseInt(qtyPrice));
+    }
+  };
+
   return (
     <>
       <div style={{ textAlign: "center" }}>
@@ -123,14 +176,12 @@ const Materials = () => {
           setPipeA={setPipeA}
           pipeB={pipeB}
           setPipeB={setPipeB}
-          pipeAPrice={pipeAPrice}
-          setPipeAPrice={setPipeAPrice}
-          pipeBPrice={pipeBPrice}
-          setPipeBPrice={setPipeBPrice}
           pipeAQty={pipeAQty}
           setPipeAQty={setPipeAQty}
           pipeBQty={pipeBQty}
           setPipeBQty={setPipeBQty}
+          setShowA={setShowA}
+          setShowB={setShowB}
         />
 
         <hr />
@@ -148,6 +199,8 @@ const Materials = () => {
           setElbowAQty={setElbowAQty}
           elbowBQty={elbowBQty}
           setElbowBQty={setElbowBQty}
+          setShowA={setShowA}
+          setShowB={setShowB}
         />
 
         <hr />
@@ -158,18 +211,29 @@ const Materials = () => {
           teeB={teeB}
           setTeeB={setTeeB}
           teeAPrice={teeAPrice}
-          setTeeAPrice={setTeeAPrice}
           teeBPrice={teeBPrice}
-          setTeeBPrice={setTeeBPrice}
           teeAQty={teeAQty}
           setTeeAQty={setTeeAQty}
           teeBQty={teeBQty}
           setTeeBQty={setTeeBQty}
+          setShowA={setShowA}
+          setShowB={setShowB}
         />
 
         <hr />
-        <Button type="submit" value="send">
-          SUBMIT
+        <Button
+          onClick={() => {
+            sendPipePriceA();
+            sendPipePriceB();
+            sendElbowPriceA();
+            sendElbowPriceB();
+            sendTeePriceA();
+            sendTeePriceB();
+          }}
+          type="submit"
+          value="send"
+        >
+          SAVE
         </Button>
       </Form>
     </>

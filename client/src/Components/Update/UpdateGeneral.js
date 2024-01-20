@@ -1,11 +1,8 @@
-// import UserLink from "../UI/UserLink";
-// import Wrapper from "../UI/Wrapper";
 import { Form, Col, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import ViolationBooleanUpdate from "./ViolationBooleanUpdate";
-// import style from "../Create/Create.module.css";
 
 const UpdateGeneral = () => {
   const navigate = useNavigate();
@@ -116,7 +113,6 @@ const UpdateGeneral = () => {
           <h1>Review Estimate</h1>
 
           {/* ESTIMATE NUMBER / NAME / DATE  ---------------------------------*/}
-
           <div style={subContainer}>
             <Col>
               <Form.Label style={reducePadding}>ESTIMATE NUMBER:</Form.Label>
@@ -179,7 +175,6 @@ const UpdateGeneral = () => {
           <br />
 
           {/* BUILDING ADDRESS ---------------------------------------- */}
-
           <div style={buildingAddressDiv}>
             <div style={subContainer}>
               <Form.Label style={reducePadding}>BUILDING ADDRESS</Form.Label>
@@ -227,7 +222,6 @@ const UpdateGeneral = () => {
           <br />
 
           {/* VIOLATION STATUS AND DATE / FDNY TEST   ------------------ */}
-
           <div style={subContainer}>
             <Col>
               <Form.Label style={reducePadding}>
@@ -244,7 +238,9 @@ const UpdateGeneral = () => {
             {violation && (
               <>
                 <Col>
-                  <Form.Label style={reducePadding}>VIOLATION DATE:</Form.Label>
+                  <Form.Label style={reducePadding}>
+                    VIOLATION CURE DATE:
+                  </Form.Label>
                   <Form.Control
                     value={violationDate}
                     onChange={(e) => setViolationDate(e.target.value)}

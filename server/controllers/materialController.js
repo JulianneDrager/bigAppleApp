@@ -82,7 +82,7 @@ exports.updateMaterial = async (req, res) => {
 
 //get MaterialId
 exports.getMaterialById = async (req, res) => {
-  console.log(req.body.details);
+  // console.log(req.body.details);
   try {
     const getTheMaterialID = await Material.findById({ _id: req.params.id });
     res.json(getTheMaterialID);
@@ -95,24 +95,24 @@ exports.getMaterialById = async (req, res) => {
 exports.updateDetailedMaterial = async (req, res) => {
   try {
     const getID = req.params.id;
-    const getDetID = req.params.details._id;
-    // console.log(req.body.details._id);
+    const getDetID = req.params.detailsId;
+    // console.log(req.body.pipeAQty);
     const updatedDetails = await Material.findOneAndUpdate(
       {
-        _id: req.params.getID,
-        details: { $elemMatch: { _id: req.params.getDetID } },
+        _id: getID,
+        details: { $elemMatch: { _id: getDetID } },
       }, // FILTER
 
       {
         $set: {
-          // "pipeSize.$.pipeA": req.body.pipeA, // UPDATE
-          // "pipeSize.$.pipeB": req.body.pipeB, // UPDATE
+          "pipeSize.$.pipeA": req.body.pipeA, // UPDATE
+          "pipeSize.$.pipeB": req.body.pipeB, // UPDATE
 
-          // "elbowSize.$.elbowA": req.body.elbowA, // UPDATE
-          // "elbowSize.$.elbowB": req.body.elbowB, // UPDATE
+          "elbowSize.$.elbowA": req.body.elbowA, // UPDATE
+          "elbowSize.$.elbowB": req.body.elbowB, // UPDATE
 
-          // "teeSize.$.teeA": req.body.teeA, // UPDATE
-          // "teeSize.$.teeB": req.body.teeB, // UPDATE
+          "teeSize.$.teeA": req.body.teeA, // UPDATE
+          "teeSize.$.teeB": req.body.teeB, // UPDATE
 
           "details.$.pipeAPrice": req.body.pipeAPrice, // UPDATE
           "details.$.pipeBPrice": req.body.pipeBPrice, //UPDATE

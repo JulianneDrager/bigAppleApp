@@ -40,7 +40,6 @@ const ViolationBooleanUpdate = ({ violation, setViolation }) => {
         name="yes_violation"
         label="VIOLATION"
         value={violation}
-        // type="check"
         onChange={onChangeViolation}
         onClick={() => setViolation("Violation")}
       />
@@ -50,7 +49,6 @@ const ViolationBooleanUpdate = ({ violation, setViolation }) => {
         name="no_violation"
         label="NOT A VIOLATION"
         value={violation}
-        // type="check"
         onChange={onChangeViolationNo}
         onClick={() => setViolation("NO violation")}
       />

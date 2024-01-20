@@ -1,10 +1,7 @@
-// import UserLink from "../UI/UserLink";
-// import Wrapper from "../UI/Wrapper";
-import { Form, Col, Button } from "react-bootstrap";
+import { Form, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-// import style from "../Create/Create.module.css";
 
 const ReviewGeneral = () => {
   const [number, setNumber] = useState("");
@@ -46,10 +43,6 @@ const ReviewGeneral = () => {
         setViolationDate(res.data.map((r) => r.violationDate));
         setEstimateDate(res.data.map((r) => r.estimateDate));
         setId(res.data.map((r) => r._id));
-        // console.log(
-        //   "DATA",
-        //   res.data.map((r) => r._id)
-        // );
       })
       .catch((err) => {
         console.log("axios error", err);
@@ -71,7 +64,6 @@ const ReviewGeneral = () => {
   ]);
 
   const idResult = id.slice(-1)[0];
-  // console.log(idResult);
 
   // allows for the last array element to show in review file
   const numberResult = number.slice(-1)[0];
@@ -116,7 +108,6 @@ const ReviewGeneral = () => {
           <h1>Review Estimate</h1>
 
           {/* ESTIMATE NUMBER / NAME / DATE  ---------------------------------*/}
-
           <div style={subContainer}>
             <Col>
               <Form.Label style={reducePadding}>ESTIMATE NUMBER:</Form.Label>
@@ -161,7 +152,6 @@ const ReviewGeneral = () => {
           <br />
 
           {/* BUILDING ADDRESS ---------------------------------------- */}
-
           <div style={buildingAddressDiv}>
             <div style={subContainer}>
               <Form.Label style={reducePadding}>BUILDING ADDRESS</Form.Label>
@@ -210,9 +200,12 @@ const ReviewGeneral = () => {
               <>
                 <Col>
                   <Form.Label style={reducePadding}>
-                    VIOLATION DATE:{" "}
+                    VIOLATION CURE DATE:
                   </Form.Label>
-                  <Form.Control value={violationDateResult} />
+                  <Form.Control
+                    value={violationDateResult}
+                    style={{ color: violationDateResult ? "red" : "green" }}
+                  />
                 </Col>
                 <hr style={hrStyle} />
               </>

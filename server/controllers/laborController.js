@@ -53,6 +53,17 @@ exports.createLaborEntry = async (req, res) => {
   }
 };
 
+//get LaborId
+exports.getLaborById = async (req, res) => {
+  // console.log(req.body.details);
+  try {
+    const getLaborID = await Labor.findById({ _id: req.params.id });
+    res.json(getLaborID);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 // Update a labor entry
 exports.updateLaborEntry = async (req, res) => {
   try {
@@ -66,38 +77,6 @@ exports.updateLaborEntry = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
-
-// update via filter
-// exports.updateTypeOfWork = async (req, res) => {
-//   await Labor.findOneAndUpdate(
-//     {
-//       _id: req.params.id,
-//       pipe: { $elemMatch: { _id: req.params.typeOfWorkId } },
-//     }, // FILTER
-
-//     {
-//       $set: {
-//         "typeOfWork.$.straightTime": req.body.straightTime, // UPDATE
-//         "typeOfWork.$.overtime": req.body.overtime, //UPDATE
-//         "typeOfWork.$.prevailingWage": req.body.prevailingWage, // UPDATE
-//       },
-//     },
-
-//     { new: true, safe: true, upsert: true },
-//     (err, data) => {
-//       if (err) {
-//         res.status(500).json({
-//           message: "update not created",
-//         });
-//       } else {
-//         res.status(200).json({
-//           success: true,
-//           message: "Post Updated",
-//         });
-//       }
-//     }
-//   );
-// };
 
 // Delete a labor entry
 exports.deleteLaborEntry = async (req, res) => {

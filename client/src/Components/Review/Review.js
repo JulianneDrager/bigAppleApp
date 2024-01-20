@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReviewGeneral from "./ReviewGeneral";
-import { Button, Col, Form, Image } from "react-bootstrap";
+import { Button, Col, Image } from "react-bootstrap";
 import ReviewBuildingType from "./ReviewBuildingType";
 import ReviewSystemType from "./ReviewSystemType";
 import ReviewSignage from "./ReviewSignage";
@@ -11,18 +11,18 @@ const Review = () => {
   const [totalPipePrice, setTotalPipePrice] = useState("");
   const [totalElbowPrice, setTotalElbowPrice] = useState("");
   const [totalTeePrice, setTotalTeePrice] = useState("");
+  const [totLaborST, setTotLaborST] = useState(0);
+  const [totLaborOT, setTotLaborOT] = useState(0);
+  const [totLaborPV, setTotLaborPV] = useState(0);
   const [price, setPrice] = useState("");
 
-  // console.log(totalTeePrice);
-
-  // total of all prices
+  // total of all material -----------------------------------------
   const finalTotal =
     parseInt(totalPipePrice) +
     parseInt(totalElbowPrice) +
     parseInt(totalTeePrice);
 
-  // console.log("test", finalTotal);
-
+  // style -----------------------------------------------------------
   const btnStyle = {
     backgroundColor: "#c84b50",
     border: "0",
@@ -59,12 +59,22 @@ const Review = () => {
         totalTeePrice={totalTeePrice}
         setTotalTeePrice={setTotalTeePrice}
       />
-      <ReviewLabor price={price} setPrice={setPrice} finalTotal={finalTotal} />
+      <ReviewLabor
+        totLaborST={totLaborST}
+        setTotLaborST={setTotLaborST}
+        totLaborOT={totLaborOT}
+        setTotLaborOT={setTotLaborOT}
+        totLaborPV={totLaborPV}
+        setTotLaborPV={setTotLaborPV}
+        price={price}
+        setPrice={setPrice}
+        finalTotal={finalTotal}
+      />
 
       <Col>
         {/* this will send email */}
         <div style={{ textAlign: "center", padding: "1rem 0" }}>
-          <Button style={btnStyle}>SUBMIT FOR REVIEW</Button>
+          <Button style={btnStyle}>SEND ESTIMATE</Button>
         </div>
       </Col>
     </>

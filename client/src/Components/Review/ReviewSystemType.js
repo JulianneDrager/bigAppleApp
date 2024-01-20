@@ -1,10 +1,7 @@
-// import UserLink from "../UI/UserLink";
-// import Wrapper from "../UI/Wrapper";
 import { Form, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-// import style from "../Create/Create.module.css";
 
 const ReviewSystemType = () => {
   const [combo, setCombo] = useState([]);
