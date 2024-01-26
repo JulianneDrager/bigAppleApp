@@ -12,36 +12,20 @@ const getAllGeneral = async (req, res) => {
 
 // Create a new General
 const createGeneral = async (req, res) => {
-  const {
-    number,
-    name,
-    phone,
-    street,
-    city,
-    zipcode,
-    notes,
-    reqBy,
-    management,
-    fdnyTest,
-    violation,
-    violationDate,
-    estimateDate,
-  } = req.body;
-
-  const newGeneral = new General({
-    number,
-    name,
-    phone,
-    street,
-    city,
-    zipcode,
-    notes,
-    reqBy,
-    management,
-    fdnyTest,
-    violation,
-    violationDate,
-    estimateDate,
+  let newGeneral = new General({
+    number: req.body.number,
+    name: req.body.name,
+    phone: req.body.phone,
+    street: req.body.street,
+    city: req.body.city,
+    zipcode: req.body.zipcode,
+    notes: req.body.notes,
+    reqBy: req.body.reqBy,
+    management: req.body.management,
+    fdnyTest: req.body.fdnyTest,
+    violation: req.body.violation,
+    violationDate: req.body.violationDate,
+    estimateDate: req.body.estimateDate,
   });
 
   try {
