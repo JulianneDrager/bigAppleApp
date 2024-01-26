@@ -3,6 +3,8 @@ const app = express();
 const cors = require("cors");
 const logger = require("morgan");
 const connectDB = require("./config/db");
+const emailTemplate = require("./email/generalEmail");
+
 require("dotenv").config();
 
 connectDB();
@@ -19,18 +21,15 @@ const generalRouter = require("./routers/generalRouter");
 const optionsRouter = require("./routers/optionsRouter");
 const materialRouter = require("./routers/materialRouter");
 const laborRouter = require("./routers/laborRouter");
-// const signageRouter = require("./routers/signageRouter");
-// const systemTypeRouter = require("./routers/systemTypeRouter");
-// const typeOfBuildingRouter = require("./routers/typeOfBuildingRouter");
 
 app.use("/user", userRouter);
 app.use("/general", generalRouter);
 app.use("/options", optionsRouter);
 app.use("/materials", materialRouter);
 app.use("/labor", laborRouter);
-// app.use("/signage", signageRouter);
-// app.use("/systemType", systemTypeRouter);
-// app.use("/typeOfBuilding", typeOfBuildingRouter);
+
+// email data
+emailTemplate;
 
 const server = app.listen(5000, () =>
   console.log(`Server running on port ${server.address().port}`)
