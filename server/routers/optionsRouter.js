@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const optionsController = require("../controllers/OptionsController");
+const optionsController = require("../controllers/optionsController"); // <-- changed
 
 router.get("/getOptions", optionsController.getAllOptionTypes);
 router.post("/createOptions", optionsController.createOptions);
