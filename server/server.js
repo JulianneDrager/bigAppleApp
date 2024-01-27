@@ -15,6 +15,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(logger("dev"));
 
+//server route
+app.get("/", (req, res) => {
+  res.json({ message: "Hello world" });
+});
+
 //  routers
 const userRouter = require("./routers/userRouter");
 const generalRouter = require("./routers/generalRouter");
