@@ -23,8 +23,8 @@ smtpTransport = nodemailer.createTransport(
 exports.sendEmail = async (req, res) => {
   console.log(req.file);
   const {
-    number,
-    name,
+    numberResult,
+    nameResult,
     //   phoneprop,
     //   emailprop,
     //   positionprop,
@@ -58,7 +58,7 @@ exports.sendEmail = async (req, res) => {
                                                   <td align="left" class="esd-block-text es-p20t es-p10b es-p25r es-p20l">
                                                       <p><br></p>
                                                      
-                                                      <p style="font-size: 19px; color: #3a4b60; font-family: helvetica, 'helvetica neue', arial, verdana, sans-serif;">NUMBER: ${number}<br>FULL NAME: ${name}<br>
+                                                      <p style="font-size: 19px; color: #3a4b60; font-family: helvetica, 'helvetica neue', arial, verdana, sans-serif;">NUMBER: ${numberResult}<br>FULL NAME: ${nameResult}<br>
                     
                                                   </td>
                                               </tr>
