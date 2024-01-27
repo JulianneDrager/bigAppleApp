@@ -22,7 +22,8 @@ smtpTransport = nodemailer.createTransport(
   })
 );
 
-app.post("/send-email", upload.single("file"), (req, res) => {
+// app.post("/send-email", upload.single("file"), (req, res) => {
+app.post("/send-email", (req, res) => {
   console.log(req.file);
   const {
     number,
@@ -36,8 +37,8 @@ app.post("/send-email", upload.single("file"), (req, res) => {
 
   //prepare email content
   const mailOptions = {
-    from: "biomazzemails@gmail.com",
-    to: "biomazzemails@gmail.com",
+    from: "applefireappdemo@gmail.com",
+    to: "applefireappdemo@gmail.com",
     subject: "test email",
     html: `
       <td class="esd-stripe" align="center" bgcolor="#5A6F8E" style="background-color: #5a6f8e;">
