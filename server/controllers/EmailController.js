@@ -21,14 +21,21 @@ smtpTransport = nodemailer.createTransport(
 
 // app.post("/send-email", upload.single("file"), (req, res) => {
 exports.sendEmail = async (req, res) => {
-  console.log(req.file);
+  console.log("number", req.body);
   const {
-    numberResult,
-    nameResult,
-    //   phoneprop,
-    //   emailprop,
-    //   positionprop,
-    //   questionprop,
+    number,
+    name,
+    phone,
+    street,
+    city,
+    zipcode,
+    notes,
+    reqBy,
+    management,
+    fdnyTest,
+    violation,
+    violationDate,
+    estimateDate,
   } = req.body;
   //   const file = req.file;
 
@@ -51,14 +58,14 @@ exports.sendEmail = async (req, res) => {
                                           <tbody>
                                               <tr>
                                                   <td align="center" class="esd-block-text es-p10t es-p10b es-p40r es-p40l es-m-p0r es-m-p0l" bgcolor="#07181b">
-                                                      <h1 style="color: #e1e2e4;">Hire&nbsp;<strong>Inquiry</strong></h1>
+                                                      <h1 style="color: #e1e2e4;">CLIENT&nbsp;<strong>ESTIMATE</strong></h1>
                                                   </td>
                                               </tr>
                                               <tr>
                                                   <td align="left" class="esd-block-text es-p20t es-p10b es-p25r es-p20l">
                                                       <p><br></p>
                                                      
-                                                      <p style="font-size: 19px; color: #3a4b60; font-family: helvetica, 'helvetica neue', arial, verdana, sans-serif;">NUMBER: ${numberResult}<br>FULL NAME: ${nameResult}<br>
+                                                      <p style="font-size: 19px; color: #3a4b60; font-family: helvetica, 'helvetica neue', arial, verdana, sans-serif;">NUMBER: ${number}. <br/> NAME: ${name} <br/> PHONE: ${phone}. <br/> STREET: ${street}. <br/> CITY: ${city}. <br/> STATE: NY. <br/> ZIPCODE. ${zipcode} <br/> NOTES: ${notes}. <br/> REQUESTED BY: ${reqBy}. <br/> MANAGEMENT: ${management}. <br/> FDNY TEST DATE: ${fdnyTest}. <br/> VIOLATION STATUS: ${violation}. <br/> VIOLATION DATE:${violationDate}. <br/> ESTIMATE: ${estimateDate}.       
                     
                                                   </td>
                                               </tr>

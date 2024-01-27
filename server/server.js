@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
+const jsonParser = bodyParser.json();
 const cors = require("cors");
 const logger = require("morgan");
 const connectDB = require("./config/db");
@@ -11,6 +13,11 @@ connectDB();
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use(jsonParser); // use it globally
+app.use(bodyParser.json()); // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // to support URL-encoded bodies
+
 app.use(cors());
 app.use(logger("dev"));
 
