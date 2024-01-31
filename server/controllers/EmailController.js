@@ -36,6 +36,11 @@ exports.sendEmail = async (req, res) => {
     violation,
     violationDate,
     estimateDate,
+    // BUILDING TYPE
+    centralStation,
+    firePump,
+    jockeyPump,
+    localPump,
   } = req.body;
   //   const file = req.file;
 
@@ -65,7 +70,12 @@ exports.sendEmail = async (req, res) => {
                                                   <td align="left" class="esd-block-text es-p20t es-p10b es-p25r es-p20l">
                                                       <p><br></p>
                                                      
-                                                      <p style="font-size: 19px; color: #3a4b60; font-family: helvetica, 'helvetica neue', arial, verdana, sans-serif;">NUMBER: ${number}. <br/> NAME: ${name} <br/> PHONE: ${phone}. <br/> STREET: ${street}. <br/> CITY: ${city}. <br/> STATE: NY. <br/> ZIPCODE. ${zipcode} <br/> NOTES: ${notes}. <br/> REQUESTED BY: ${reqBy}. <br/> MANAGEMENT: ${management}. <br/> FDNY TEST DATE: ${fdnyTest}. <br/> VIOLATION STATUS: ${violation}. <br/> VIOLATION DATE:${violationDate}. <br/> ESTIMATE: ${estimateDate}.       
+                                                      <p style="font-size: 19px; color: #3a4b60; font-family: helvetica, 'helvetica neue', arial, verdana, sans-serif;">
+                                                      <p>General Information</p>
+                                                      NUMBER: ${number}. <br/> NAME: ${name} <br/> PHONE: ${phone}. <br/> STREET: ${street}. <br/> CITY: ${city}. <br/> STATE: NY. <br/> ZIPCODE. ${zipcode} <br/> NOTES: ${notes}. <br/> REQUESTED BY: ${reqBy}. <br/> MANAGEMENT: ${management}. <br/> FDNY TEST DATE: ${fdnyTest}. <br/> VIOLATION STATUS: ${violation}. <br/> VIOLATION DATE:${violationDate}. <br/> ESTIMATE: ${estimateDate}.      
+                                                      <hr/>
+                                                      <p>Building Type Selections<p/>
+                                                      ${centralStation}. <br/>  ${firePump} <br/> ${jockeyPump} <br/> ${localPump}
                     
                                                   </td>
                                               </tr>
