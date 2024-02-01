@@ -75,7 +75,7 @@ exports.sendEmail = async (req, res) => {
                                                       NUMBER: ${number}. <br/> NAME: ${name} <br/> PHONE: ${phone}. <br/> STREET: ${street}. <br/> CITY: ${city}. <br/> STATE: NY. <br/> ZIPCODE. ${zipcode} <br/> NOTES: ${notes}. <br/> REQUESTED BY: ${reqBy}. <br/> MANAGEMENT: ${management}. <br/> FDNY TEST DATE: ${fdnyTest}. <br/> VIOLATION STATUS: ${violation}. <br/> VIOLATION DATE:${violationDate}. <br/> ESTIMATE: ${estimateDate}.      
                                                       <hr/>
                                                       <p>Building Type Selections<p/>
-                                                      CENTRAL STATION: ${centralStation} <br/> FIRE PUMP: ${firePump} <br/> JOCKEY PUMP: ${jockeyPump} <br/> LOCAL ALARM:${localPump}
+                                                      CENTRAL STATION: ${centralStation} <br/> FIRE PUMP: ${firePump} <br/> JOCKEY PUMP: ${jockeyPump} <br/> LOCAL ALARM: ${localPump}
                     
                                                   </td>
                                               </tr>
