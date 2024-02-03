@@ -137,6 +137,7 @@ exports.sendEmail = async (req, res) => {
                                                              : null,
                                                          ]}
                                                      
+
                                                           ${[
                                                             standPipe === "ST"
                                                               ? "<div>Stand Pipe</div>"
@@ -166,6 +167,7 @@ exports.sendEmail = async (req, res) => {
                                                                   : null,
                                                               ]}
                                                               </div>
+
                                                   </td>
                                               </tr>
                                           </tbody>
